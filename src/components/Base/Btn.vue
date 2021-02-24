@@ -2,13 +2,25 @@
   <div :class="btnClass">
     <template v-if="href">
       <a href="#">
-        {{ text }}
+        <template v-if="iconSrc">
+          <img :src="iconSrc" aly="icon" />
+        </template>
+
+        <template v-else>
+          {{ text }}
+        </template>
       </a>
     </template>
 
     <template v-else>
       <button>
-        {{ text }}
+        <template v-if="iconSrc">
+          <img :src="iconSrc" aly="icon" />
+        </template>
+
+        <template v-else>
+          {{ text }}
+        </template>
       </button>
     </template>
   </div>
@@ -20,7 +32,8 @@ export default {
   props: {
     text: {
       type: String,
-      required: true,
+      required: false,
+      default: 'Оставить заявку',
     },
     big: {
       type: Boolean,
@@ -47,6 +60,11 @@ export default {
       required: false,
       default: '',
     },
+    iconSrc: {
+      type: String,
+      required: false,
+      default: '',
+    },
   },
   computed: {
     btnClass() {
@@ -64,6 +82,10 @@ export default {
 
       if (this.shadow) {
         btnClass += ' btn--shadow';
+      }
+
+      if (this.iconSrc) {
+        btnClass += ' btn--icon';
       }
 
       return btnClass;
@@ -131,6 +153,11 @@ export default {
 
     &--shadow {
       box-shadow: 0px 4px 10px rgba(61, 114, 249, 0.5);
+    }
+
+    &--icon {
+      min-width: initial;
+      border-radius: 5px;
     }
   }
 </style>

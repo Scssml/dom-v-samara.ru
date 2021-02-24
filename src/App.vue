@@ -9,6 +9,9 @@
     <Section7 />
     <Section8 />
     <Section9 />
+    <Section10 />
+    <Section11 />
+    <Footer />
   </div>
 </template>
 
@@ -22,6 +25,9 @@ import Section6 from '@/components/Sections/Section6.vue';
 import Section7 from '@/components/Sections/Section7.vue';
 import Section8 from '@/components/Sections/Section8.vue';
 import Section9 from '@/components/Sections/Section9.vue';
+import Section10 from '@/components/Sections/Section10.vue';
+import Section11 from '@/components/Sections/Section11.vue';
+import Footer from '@/components/Sections/Footer.vue';
 
 export default {
   name: 'App',
@@ -35,6 +41,9 @@ export default {
     Section7,
     Section8,
     Section9,
+    Section10,
+    Section11,
+    Footer,
   },
 };
 </script>
@@ -103,7 +112,7 @@ export default {
     }
   }
 
-  .section {
-
+  .footer a {
+    color: #000;
   }
 </style>
