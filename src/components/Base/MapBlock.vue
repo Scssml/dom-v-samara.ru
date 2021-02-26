@@ -71,6 +71,10 @@ export default {
       bottom: 0;
       left: 123px;
       z-index: 1;
+
+      @media (max-width: 991px) {
+        left: 0;
+      }
     }
   }
 </style>

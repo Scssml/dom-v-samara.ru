@@ -5,7 +5,7 @@
 
       <div class="row section__tabs">
         <template v-for="(item, index) in tabs">
-          <div class="col-lg-3 mb-4" :key="index">
+          <div class="col-sm-6 col-md-4 col-lg-3 mb-4" :key="index">
             <Tab
               :name="item.name"
               :active="index === tabActive - 1"

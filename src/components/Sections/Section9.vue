@@ -4,7 +4,7 @@
       <h2 class="section__title text-center" v-html="title"></h2>
 
       <div class="row">
-        <div class="col-lg-5">
+        <div class="col-xl-5">
           <StaffItem
             :imgSrc="staff.imgSrc"
             :name="staff.name"
@@ -14,7 +14,7 @@
           />
         </div>
 
-        <div class="col-lg-6">
+        <div class="col-xl-7">
           <Map />
         </div>
       </div>

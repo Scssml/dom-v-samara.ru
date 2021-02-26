@@ -1,7 +1,7 @@
 <template>
   <div class="block">
     <div class="row">
-      <div class="col-lg-6 pr-5">
+      <div class="col-lg-6 pr-lg-5 mb-4 mb-lg-0 pb-4 pb-g-0">
         <div class="block__title">
           <slot name="title-col-1"></slot>
         </div>
@@ -11,7 +11,7 @@
         <slot name="btn-col-1"></slot>
       </div>
 
-      <div class="col-lg-6 pl-5">
+      <div class="col-lg-6 pl-lg-5">
         <div class="block__title">
           <slot name="title-col-2"></slot>
         </div>
@@ -44,14 +44,30 @@ export default {
       line-height: 30px;
       text-transform: uppercase;
       margin-bottom: 16px;
+
+      @media (max-width: 575px) {
+        text-align: center;
+        font-size: 14px;
+        line-height: 22px;
+      }
     }
 
     *[class^="col"] {
-      box-shadow: 1px 0 0 0 #F3AF01, inset -1px 0 0 0 #F3AF01;
+      border-right: 2px solid #f3af01;
 
       &:last-child {
-        box-shadow: none;
+        border-right: none;
+        border-bottom: none;
       }
+
+      @media (max-width: 991px) {
+        border-right: none;
+        border-bottom: 2px solid #f3af01;
+      }
+    }
+
+    @media (max-width: 575px) {
+      padding: 20px;
     }
   }
 </style>

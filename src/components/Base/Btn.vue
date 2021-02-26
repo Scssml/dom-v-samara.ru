@@ -140,6 +140,13 @@ export default {
       height: 50px;
 
       font-size: 13px;
+
+      @media (max-width: 575px) {
+        min-width: 126px;
+        height: 40px;
+        font-size: 10px;
+        line-height: 20px;
+      }
     }
 
     &--big {

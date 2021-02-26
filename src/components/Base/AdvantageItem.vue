@@ -52,6 +52,15 @@ export default {
         width: 100%;
         height: 100%;
       }
+
+      @media (max-width: 1199px) {
+        position: static;
+        margin-right: 24px;
+      }
+    }
+
+    @media (max-width: 1199px) {
+      padding: 17px 24px;
     }
   }
 </style>

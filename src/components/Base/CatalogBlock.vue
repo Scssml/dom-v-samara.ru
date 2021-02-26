@@ -77,6 +77,10 @@ export default {
       text-align: center;
       text-transform: uppercase;
       margin-bottom: 13px;
+
+      @media (max-width: 575px) {
+        font-size: 17px;
+      }
     }
 
     &__text {

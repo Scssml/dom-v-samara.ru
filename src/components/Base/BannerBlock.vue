@@ -13,7 +13,7 @@
 
     <template v-if="btnName">
       <div class="row align-items-center">
-        <div class="col-lg-7 pr-lg-2">
+        <div class="col-md-7 col-lg-7 pr-lg-2 mb-3 mb-md-0">
           <Btn
             :text="btnName"
             :big="true"
@@ -22,7 +22,7 @@
         </div>
 
         <template v-if="btnText">
-          <div class="col-lg-5 pl-lg-1">
+          <div class="col-md-5 col-lg-5 pl-lg-1">
             <div class="block__btn-text" v-html="btnText"></div>
           </div>
         </template>
@@ -102,6 +102,15 @@ export default {
       line-height: 20px;
       color: #737373;
       margin-top: 20px;
+
+      @media (max-width: 767px) {
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 575px) {
+      padding: 35px 20px;
+      border-radius: 0;
     }
   }
 </style>

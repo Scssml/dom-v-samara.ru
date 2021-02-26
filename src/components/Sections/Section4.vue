@@ -5,7 +5,7 @@
 
       <h3 class="section__sub-title text-center" v-html="subTitle"></h3>
 
-      <div class="row section__materials">
+      <div class="row section__materials d-none d-lg-flex">
         <template v-for="(item, index) in cardList">
           <div class="col-lg-4" :key="index">
             <MaterialsItem
@@ -16,6 +16,24 @@
             />
           </div>
         </template>
+      </div>
+
+      <div class="section__slider d-lg-none">
+        <Slider
+          :breakpoints="sliderBreakpoints"
+          :id="3"
+        >
+          <template v-for="(item, index) in cardList">
+            <SwiperSlide :key="index">
+                <MaterialsItem
+                :imgSrc="item.imgSrc"
+                :name="item.name"
+                :text="item.text"
+                :price="item.price"
+              />
+            </SwiperSlide>
+          </template>
+        </Slider>
       </div>
 
       <div class="text-center">
@@ -58,6 +76,8 @@
 </template>
 
 <script>
+import Slider from '@/components/Base/Slider.vue';
+import { SwiperSlide } from 'vue-awesome-swiper';
 import MaterialsItem from '@/components/Base/MaterialsItem.vue';
 import InfoBlock2Col from '@/components/Base/InfoBlock2Col.vue';
 import Btn from '@/components/Base/Btn.vue';
@@ -65,6 +85,8 @@ import Btn from '@/components/Base/Btn.vue';
 export default {
   name: 'Section4',
   components: {
+    Slider,
+    SwiperSlide,
     MaterialsItem,
     InfoBlock2Col,
     Btn,
@@ -73,6 +95,23 @@ export default {
     return {
       title: 'Цены и условия оплаты',
       subTitle: 'Используем ТОП 3 материала для строительства',
+      sliderBreakpoints: {
+        768: {
+          slidesPerView: 2.2,
+          spaceBetween: 0,
+          freeMode: true,
+        },
+        576: {
+          slidesPerView: 1.7,
+          spaceBetween: 0,
+          freeMode: true,
+        },
+        320: {
+          slidesPerView: 1.2,
+          spaceBetween: 0,
+          freeMode: true,
+        },
+      },
       cardList: [
         {
           imgSrc: require('@/assets/img/materials/img-1.jpg'),
@@ -147,6 +186,14 @@ export default {
       margin-bottom: 23px;
     }
 
+    &__slider {
+      margin-bottom: 40px;
+
+      @media (max-width: 575px) {
+        margin-bottom: 60px;
+      }
+    }
+
     &__compare-link {
       font-weight: 600;
       font-size: 14px;
@@ -154,6 +201,13 @@ export default {
       letter-spacing: 0.05em;
       text-transform: uppercase;
       margin-bottom: 4px;
+
+      @media (max-width: 575px) {
+        display: inline-block;
+        font-size: 12px;
+        line-height: 20px;
+        margin-bottom: 10px;
+      }
     }
 
     &__small-text {
@@ -174,11 +228,24 @@ export default {
 
       li {
         line-height: 28px;
+
+        @media (max-width: 575px) {
+          line-height: 20px;
+          margin-bottom: 5px;
+        }
       }
     }
 
     &__btn {
       width: 284px;
+
+      @media (max-width: 575px) {
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 575px) {
+      padding: 40px 0;
     }
   }
 </style>

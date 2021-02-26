@@ -2,7 +2,7 @@
   <div>
     <div class="row mb-custom">
       <template v-for="(item, index) in list">
-        <div class="col-lg-2" :key="index">
+        <div class="col-6 col-sm-6 col-md-4 col-xl-2 mb-4" :key="index">
           <Tab
             :name="item.name"
             :active="index === tabActive - 1"
@@ -13,7 +13,7 @@
     </div>
 
     <div class="row">
-      <div class="col-lg-6">
+      <div class="col-xl-6 mb-5 mb-xl-0">
         <template v-for="(item, index) in list">
           <AdvantagesItem
             :key="index"
@@ -26,7 +26,7 @@
       </div>
 
       <template v-if="formBlock">
-        <div class="col-lg-6">
+        <div class="col-xl-6">
           <FormBlock1
             :imgSrc="formBlock.imgSrc"
             :title="formBlock.title"

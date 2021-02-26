@@ -104,5 +104,9 @@ export default {
     &__title {
       margin-bottom: 40px;
     }
+
+    @media (max-width: 575px) {
+      padding: 40px 0;
+    }
   }
 </style>

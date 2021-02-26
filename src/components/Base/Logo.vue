@@ -45,5 +45,9 @@ export default {
     &:focus {
       color: #000000;
     }
+
+    @media (max-width: 991px) {
+      font-size: 14px;
+    }
   }
 </style>

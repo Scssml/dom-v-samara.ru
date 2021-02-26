@@ -2,13 +2,13 @@
   <section class="section">
     <div class="container">
       <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-12 col-xxl-8">
           <h2 class="section__title" v-html="title"></h2>
 
           <div class="section__text" v-html="text"></div>
 
-          <div class="row">
-            <div class="col-lg-5">
+          <div class="row justify-content-center justify-content-md-start">
+            <div class="col-8 col-md-6 col-lg-5 col-xl-4 col-xxl-5">
               <Form
                 :items="form.items"
                 :btnName="form.btnName"
@@ -16,7 +16,7 @@
               />
             </div>
 
-            <div class="col-lg-4">
+            <div class="col-md-5 col-lg-4 col-xl-3 col-xxl-4 mt-5 mt-md-0">
               <FormHint :text="hint" />
             </div>
           </div>

@@ -34,6 +34,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    max-width: 300px;
     height: 100%;
     padding: 15px 18px;
     font-weight: 800;
@@ -51,6 +52,12 @@ export default {
 
     &--active {
       border-color: #F3AF01;
+    }
+
+    @media (max-width: 575px) {
+      padding: 8px;
+      font-size: 10px;
+      line-height: 15px;
     }
   }
 </style>

@@ -2,16 +2,16 @@
   <footer class="footer">
     <div class="container">
       <div class="row align-items-center justify-content-between">
-        <div class="col-lg-auto" v-html="leftText"></div>
-
-        <div class="col-lg-auto">
+        <div class="col-sm-auto">
           <Logo
             :src="logo.src"
             :text="logo.text"
           />
         </div>
 
-        <div class="col-lg-auto" v-html="rightText"></div>
+        <div class="col-sm-auto" v-html="rightText"></div>
+
+        <div class="col-lg-auto mt-3 mt-lg-0 order-lg-first text-center" v-html="leftText"></div>
       </div>
     </div>
 
@@ -33,7 +33,7 @@ export default {
     return {
       logo: {
         src: require('@/assets/img/logo.png'),
-        text: 'Фундаменты Волга',
+        text: 'Фундамент Волга',
       },
       leftText: '© Фундаменты Волга, Все права защищены.',
       rightText: '<a href="">Политика конфиденциальности</a>',

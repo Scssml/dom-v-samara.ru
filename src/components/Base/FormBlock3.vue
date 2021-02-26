@@ -149,5 +149,9 @@ export default {
       margin-bottom: 16px;
       text-align: left;
     }
+
+    @media (max-width: 575px) {
+      width: 100%;
+    }
   }
 </style>

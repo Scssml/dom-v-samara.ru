@@ -5,13 +5,13 @@
     <Section3 />
     <Section4 />
     <Section5 />
-    <Section6 />
-    <Section7 />
-    <Section8 />
-    <Section9 />
-    <Section10 />
-    <Section11 />
-    <Footer />
+    <!-- <Section6 /> -->
+    <!-- <Section7 /> -->
+    <!-- <Section8 /> -->
+    <!-- <Section9 /> -->
+    <!-- <Section10 /> -->
+    <!-- <Section11 /> -->
+    <!-- <Footer /> -->
   </div>
 </template>
 
@@ -21,13 +21,13 @@ import Section2 from '@/components/Sections/Section2.vue';
 import Section3 from '@/components/Sections/Section3.vue';
 import Section4 from '@/components/Sections/Section4.vue';
 import Section5 from '@/components/Sections/Section5.vue';
-import Section6 from '@/components/Sections/Section6.vue';
-import Section7 from '@/components/Sections/Section7.vue';
-import Section8 from '@/components/Sections/Section8.vue';
-import Section9 from '@/components/Sections/Section9.vue';
-import Section10 from '@/components/Sections/Section10.vue';
-import Section11 from '@/components/Sections/Section11.vue';
-import Footer from '@/components/Sections/Footer.vue';
+// import Section6 from '@/components/Sections/Section6.vue';
+// import Section7 from '@/components/Sections/Section7.vue';
+// import Section8 from '@/components/Sections/Section8.vue';
+// import Section9 from '@/components/Sections/Section9.vue';
+// import Section10 from '@/components/Sections/Section10.vue';
+// import Section11 from '@/components/Sections/Section11.vue';
+// import Footer from '@/components/Sections/Footer.vue';
 
 export default {
   name: 'App',
@@ -37,13 +37,13 @@ export default {
     Section3,
     Section4,
     Section5,
-    Section6,
-    Section7,
-    Section8,
-    Section9,
-    Section10,
-    Section11,
-    Footer,
+    // Section6,
+    // Section7,
+    // Section8,
+    // Section9,
+    // Section10,
+    // Section11,
+    // Footer,
   },
 };
 </script>
@@ -67,6 +67,11 @@ export default {
     font-size: 17px;
     line-height: 25px;
     color: #000;
+
+    @media (max-width: 575px) {
+      font-size: 14px;
+      line-height: 21px;
+    }
   }
 
   a {
@@ -89,6 +94,11 @@ export default {
     font-size: 48px;
     line-height: 70px;
     font-weight: 400;
+
+    @media (max-width: 575px) {
+      font-size: 21px;
+      line-height: 35px;
+    }
   }
 
   h2, .h2 {
@@ -96,6 +106,11 @@ export default {
     font-weight: bold;
     font-size: 34px;
     line-height: 45px;
+
+    @media (max-width: 575px) {
+      font-size: 20px;
+      line-height: 30px;
+    }
   }
 
   h3, .h3 {
@@ -103,12 +118,45 @@ export default {
     font-weight: 800;
     font-size: 19px;
     line-height: 30px;
+
+    @media (max-width: 575px) {
+      font-size: 14px;
+      line-height: 22px;
+    }
   }
 
   .container {
 
     @media (min-width: 1322px) {
       max-width: 1322px;
+    }
+  }
+
+  .col-xxl-8 {
+    @media (min-width: 1322px) {
+      flex: 0 0 66.66667%;
+      max-width: 66.66667%;
+    }
+  }
+
+  .col-xxl-7 {
+    @media (min-width: 1322px) {
+      flex: 0 0 58.33333%;
+      max-width: 58.33333%;
+    }
+  }
+
+  .col-xxl-5 {
+    @media (min-width: 1322px) {
+      flex: 0 0 41.66667%;
+      max-width: 41.66667%;
+    }
+  }
+
+  .col-xxl-4 {
+    @media (min-width: 1322px) {
+      flex: 0 0 33.33333%;
+      max-width: 33.33333%;
     }
   }
 

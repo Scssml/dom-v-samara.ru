@@ -2,7 +2,7 @@
   <header class="header">
     <div class="container">
       <div class="row align-items-center justify-content-between">
-        <div class="col-lg-7">
+        <div class="col-md-auto col-xl-7">
           <div class="row align-items-center">
             <div class="col-lg-auto">
               <Logo
@@ -11,17 +11,17 @@
               />
             </div>
 
-            <div class="col-lg-7">
+            <div class="col-lg-7 d-none d-xl-block">
               <span class="header__text">{{ slogan }}</span>
             </div>
           </div>
         </div>
 
-        <div class="col-lg-auto">
-          <div class="row align-items-center">
+        <div class="col-md-auto mt-3 mt-md-0">
+          <div class="row align-items-center justify-content-between">
             <div class="col-auto text-right">
-              <span class="header__text">{{ workMode }}</span>
-              <br>
+              <span class="header__text d-none d-sm-inline-block">{{ workMode }}</span>
+              <br class="d-none d-sm-block">
               <Phone :tel="tel" />
             </div>
 
@@ -56,7 +56,7 @@ export default {
     return {
       logo: {
         src: require('@/assets/img/logo.png'),
-        text: 'Фундаменты Волга',
+        text: 'Фундамент Волга',
       },
       slogan: `
         Строительство домов из камня в 
@@ -75,12 +75,29 @@ export default {
 <style lang="scss" scoped>
   .header {
     padding: 18px 0;
+    position: relative;
 
     &__text {
       display: inline-block;
       font-size: 15px;
       line-height: 20px;
       color: #737373;
+    }
+
+    &:before {
+
+      @media (max-width: 767px) {
+        content: '';
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+      }
+    }
+
+    @media (max-width: 767px) {
+      padding: 0;
     }
   }
 </style>

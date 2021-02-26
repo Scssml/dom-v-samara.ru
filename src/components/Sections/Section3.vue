@@ -5,7 +5,7 @@
 
       <div class="row">
         <template v-for="(item, index) in projectList">
-          <div class="col-lg-3" :key="index">
+          <div class="col-lg-6 col-xl-3 mb-4 mb-xl-0 d-none d-xl-block" :key="index">
             <ProjectItem
               :imgSrc="item.imgSrc"
               :name="item.title"
@@ -14,7 +14,24 @@
           </div>
         </template>
 
-        <div class="col-lg-3">
+        <div class="section__slider col-md-7 col-lg-8 d-xl-none">
+          <Slider
+            :breakpoints="sliderBreakpoints"
+            :id="1"
+          >
+            <template v-for="(item, index) in projectList">
+              <SwiperSlide :key="index">
+                <ProjectItem
+                  :imgSrc="item.imgSrc"
+                  :name="item.title"
+                  :props="item.props"
+                />
+              </SwiperSlide>
+            </template>
+          </Slider>
+        </div>
+
+        <div class="col-md-5 col-lg-4 col-xl-3">
           <CatalogBlock
             :imgSrc="catalogBlock.imgSrc"
             :title="catalogBlock.title"
@@ -27,18 +44,36 @@
 </template>
 
 <script>
+import Slider from '@/components/Base/Slider.vue';
+import { SwiperSlide } from 'vue-awesome-swiper';
 import ProjectItem from '@/components/Base/ProjectItem.vue';
 import CatalogBlock from '@/components/Base/CatalogBlock.vue';
 
 export default {
   name: 'Section3',
   components: {
+    Slider,
+    SwiperSlide,
     ProjectItem,
     CatalogBlock,
   },
   data() {
     return {
       title: 'Проекты домов',
+      sliderBreakpoints: {
+        992: {
+          slidesPerView: 2,
+          spaceBetween: 0,
+        },
+        768: {
+          slidesPerView: 1,
+          spaceBetween: 0,
+        },
+        576: {
+          slidesPerView: 2,
+          spaceBetween: 0,
+        },
+      },
       projectList: [
         {
           imgSrc: require('@/assets/img/projects/img-1.jpg'),
@@ -116,6 +151,17 @@ export default {
 
     &__title {
       margin-bottom: 28px;
+    }
+
+    &__slider {
+
+      @media (max-width: 767px) {
+        margin-bottom: 82px;
+      }
+    }
+
+    @media (max-width: 575px) {
+      padding: 40px 0;
     }
   }
 </style>

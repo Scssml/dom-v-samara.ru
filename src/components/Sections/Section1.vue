@@ -4,19 +4,20 @@
 
     <div class="container">
       <div class="row">
-        <div class="col-lg-7">
+        <div class="col-xl-9 col-xxl-7">
           <h1 class="section__title" v-html="title"></h1>
         </div>
       </div>
 
       <div class="row">
-        <div class="col-lg-5">
+        <div class="col-lg-7 col-xl-6 col-xxl-5">
           <BannerBlock
             :text="banner.text"
             :list="banner.list"
             :btnName="banner.btnName"
             :btnText="banner.btnText"
             :smallText="banner.smallText"
+            class="section__banner-block"
           />
         </div>
       </div>
@@ -69,10 +70,29 @@ export default {
 
     &__header {
       margin-bottom: 45px;
+
+      @media (max-width: 575px) {
+        margin-bottom: 23px;
+      }
     }
 
     &__title {
       margin-bottom: 39px;
+
+      @media (max-width: 575px) {
+        margin-bottom: 336px;
+      }
+    }
+
+    &__banner-block {
+      margin: 0 -15px;
+    }
+
+    @media (max-width: 575px) {
+      background-image: url(~@/assets/img/block1/bg-small.jpg);
+      background-position: top;
+      background-size: auto 616px;
+      padding-bottom: 0;
     }
   }
 </style>

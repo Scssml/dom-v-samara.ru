@@ -75,6 +75,10 @@ export default {
         width: 100%;
         height: 100%;
       }
+
+      @media (max-width: 575px) {
+        height: 120px;
+      }
     }
 
     &__name {
@@ -96,6 +100,11 @@ export default {
       line-height: 30px;
       letter-spacing: 0.05em;
       margin-bottom: 22px;
+    }
+
+    @media (max-width: 1199px) {
+      padding-left: 20px;
+      padding-right: 20px;
     }
   }
 </style>

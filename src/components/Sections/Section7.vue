@@ -5,7 +5,7 @@
 
       <div class="row section__advantages">
         <template v-for="(item, index) in advantageList">
-          <div class="col-lg-4" :key="index">
+          <div class="col-xl-4 mb-4 mb-xl-0" :key="index">
             <AdvantageItem
               :imgSrc="item.imgSrc"
               :text="item.text"
@@ -14,7 +14,7 @@
         </template>
       </div>
 
-      <div class="row">
+      <div class="row d-none d-xl-flex">
         <template v-for="(item, index) in stepsList">
           <div class="col-lg-3" :key="index">
             <StepItem
@@ -24,23 +24,53 @@
           </div>
         </template>
       </div>
+
+      <div class="d-xl-none">
+        <Slider
+          :breakpoints="sliderBreakpoints"
+          :id="2"
+        >
+          <template v-for="(item, index) in stepsList">
+            <SwiperSlide :key="index">
+              <StepItem
+                :imgSrc="item.imgSrc"
+                :list="item.list"
+              />
+            </SwiperSlide>
+          </template>
+        </Slider>
+      </div>
     </div>
   </section>
 </template>
 
 <script>
+import Slider from '@/components/Base/Slider.vue';
+import { SwiperSlide } from 'vue-awesome-swiper';
 import AdvantageItem from '@/components/Base/AdvantageItem.vue';
 import StepItem from '@/components/Base/StepItem.vue';
 
 export default {
   name: 'Section7',
   components: {
+    Slider,
+    SwiperSlide,
     AdvantageItem,
     StepItem,
   },
   data() {
     return {
       title: 'Мы выполняем весь комплекс работ',
+      sliderBreakpoints: {
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 0,
+        },
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 0,
+        },
+      },
       advantageList: [
         {
           imgSrc: require('@/assets/img/advantages/img-1.png'),

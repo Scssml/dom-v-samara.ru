@@ -34,8 +34,8 @@ export default {
     margin-bottom: 23px;
 
     &__img {
-      width: 28px;
-      height: 28px;
+      width: 26px;
+      height: 26px;
       flex-shrink: 0;
       margin-right: 9px;
 

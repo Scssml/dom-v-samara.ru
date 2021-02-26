@@ -57,6 +57,11 @@ export default {
         width: 100%;
         height: 100%;
       }
+
+      @media (max-width: 575px) {
+        margin-bottom: 24px;
+        height: 186px;
+      }
     }
 
     &__title {
@@ -66,6 +71,17 @@ export default {
       line-height: 30px;
       text-transform: uppercase;
       margin-bottom: 8px;
+
+      @media (max-width: 575px) {
+        font-size: 14px;
+        line-height: 22px;
+      }
+    }
+
+    @media (max-width: 575px) {
+      padding: 30px 20px;
+      font-size: 14px;
+      line-height: 22px;
     }
   }
 </style>

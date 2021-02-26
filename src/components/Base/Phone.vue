@@ -36,5 +36,13 @@ export default {
     &:focus {
       color: #000000;
     }
+
+    @media (max-width: 991px) {
+      font-size: 18px;
+    }
+
+    @media (max-width: 575px) {
+      font-size: 13px;
+    }
   }
 </style>

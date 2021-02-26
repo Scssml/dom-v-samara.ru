@@ -12,8 +12,8 @@
       <List :list="list" class="block__list" />
     </template>
 
-    <div class="row">
-      <div class="col-lg-7">
+    <div class="row justify-content-center justify-content-md-start">
+      <div class="col-sm-auto col-md-12 col-lg-7">
         <Form
           :items="formProps.items"
           :btnName="formProps.btnName"
@@ -89,6 +89,11 @@ export default {
       text-align: center;
       text-transform: uppercase;
       margin-bottom: 18px;
+
+      @media (max-width: 575px) {
+        font-size: 14px;
+        line-height: 22px;
+      }
     }
 
     &__text {
@@ -97,6 +102,20 @@ export default {
 
     &__list {
       margin-bottom: 39px;
+
+      @media (max-width: 575px) {
+        margin-bottom: 20px;
+      }
+    }
+
+    @media (max-width: 767px) {
+      background-image: none !important;
+    }
+
+    @media (max-width: 575px) {
+      padding: 30px 20px;
+      font-size: 14px;
+      line-height: 22px;
     }
   }
 </style>

@@ -1,13 +1,13 @@
 <template>
   <div class="block" :style="bgImage">
     <template v-if="imgSrc">
-      <div class="block__img">
+      <div class="block__img d-none d-lg-block">
         <img :src="imgSrc" alt="form-img" />
       </div>
     </template>
 
     <div class="row">
-      <div class="col-lg-8">
+      <div class="col-lg-8 col-xl-10 col-xxl-8">
         <template v-if="title">
           <div class="block__title" v-html="title"></div>
         </template>
@@ -17,7 +17,7 @@
         </template>
 
         <div class="row">
-          <div class="col-lg-5">
+          <div class="col-md-7 col-xl-5">
             <Form
               :items="formProps.items"
               :btnName="formProps.btnName"
@@ -25,7 +25,7 @@
             />
           </div>
 
-          <div class="col-lg-4">
+          <div class="col-md-5 col-xl-4 mt-4 mt-md-0">
             <FormHint :text="hint" />
           </div>
         </div>

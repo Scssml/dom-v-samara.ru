@@ -8,10 +8,14 @@
       <div class="project__name">{{ name }}</div>
 
       <template v-if="props">
-        <div class="row">
+        <div class="row align-items-center">
           <template v-for="(item, index) in props">
             <div
-              :class="(index + 1 === props.length && ((index + 1) % 2)) ? 'col-lg-12' : 'col-lg-6'"
+              :class="
+                (index + 1 === props.length && ((index + 1) % 2))
+                  ? 'col-12'
+                  : 'col-6 col-sm-12 col-md-6'
+              "
               :key="index"
             >
               <ProjectPropItem
@@ -94,6 +98,10 @@ export default {
       text-align: center;
       text-transform: uppercase;
       margin-bottom: 19px;
+
+      @media (max-width: 575px) {
+        font-size: 17px;
+      }
     }
   }
 </style>
