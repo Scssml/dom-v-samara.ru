@@ -8,7 +8,8 @@ Vue.config.productionTip = false;
 Vue.use(VueInputMask.default);
 Vue.use(VueYandexMetrika, {
   id: 74470234,
-  env: process.env.NODE_ENV,
+  // env: process.env.NODE_ENV,
+  env: 'production',
 });
 
 new Vue({
