@@ -115,6 +115,8 @@ export default {
           .then((response) => {
             if (response.data.success) {
               this.successMessage = response.data.message;
+
+              this.$metrika.reachGoal('ORDERFORM');
             } else {
               this.errorMessage = response.data.message;
             }
