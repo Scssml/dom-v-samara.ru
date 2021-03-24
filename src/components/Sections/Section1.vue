@@ -5,7 +5,7 @@
     <div class="container position-relative">
       <div class="row">
         <div class="col-xl-9 col-xxl-7">
-          <h1 class="section__title" v-html="title"></h1>
+          <h1 class="section__title" v-html="showTitle"></h1>
         </div>
       </div>
 
@@ -59,6 +59,21 @@ export default {
         <b>Каменный дом за 3 месяца с экономией на строительстве</b>
         <br>до 350 000 руб.
       `,
+      titleList: [
+        {
+          utm_campaign: 'GAZOBETON',
+          title: '<b>Дом из газобетона за 3 месяца с экономией на строительстве</b> <br> до 350 000 руб.',
+        },
+        {
+          utm_campaign: 'KERAMZITOBLOCK',
+          title: '<b>Дом из керамзитоблоков за 3 месяца с экономией на строительстве</b> <br> до 350 000 руб.',
+        },
+        {
+          utm_campaign: 'KERAMOBLOCK',
+          title: '<b>Дом из керамических блоков за 3 месяца с экономией на строительстве</b> <br> до 350 000 руб.',
+        },
+      ],
+      strGet: '',
       banner: {
         text: `
           <b>Ответьте на 4 вопроса</b> и получите в подарок
@@ -82,6 +97,15 @@ export default {
         iconSrc: require('@/assets/img/fixedBtn/icon.svg'),
       },
     };
+  },
+  computed: {
+    showTitle() {
+      const result = this.titleList.find((item) => this.strGet.indexOf(item.utm_campaign) !== -1);
+      return (result) ? result.title : this.title;
+    },
+  },
+  created() {
+    this.strGet = window.location.search;
   },
 };
 </script>

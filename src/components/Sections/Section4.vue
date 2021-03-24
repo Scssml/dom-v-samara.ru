@@ -141,19 +141,19 @@ export default {
           imgSrc: require('@/assets/img/materials/img-1.jpg'),
           name: 'Газобетон',
           text: 'Теплый и прочный дом с небольшим весом',
-          price: '20 - 21 тыс. руб. за м2',
+          price: 'от 17 тыс. руб. за м2',
         },
         {
           imgSrc: require('@/assets/img/materials/img-2.jpg'),
           name: 'Керамзитоблок',
           text: 'Высокая прочность материала',
-          price: '20 - 21 тыс. руб. за м2',
+          price: 'от 17 тыс. руб. за м2',
         },
         {
           imgSrc: require('@/assets/img/materials/img-3.jpg'),
           name: 'Керамический блок',
           text: 'Легкий и экологичный материал',
-          price: '21 - 23 тыс. руб. за м2',
+          price: 'от 18 тыс. руб. за м2',
         },
       ],
       compare: {
