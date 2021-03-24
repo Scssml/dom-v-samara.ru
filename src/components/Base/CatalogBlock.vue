@@ -1,7 +1,7 @@
 <template>
   <div class="block">
     <div class="block__img">
-      <img :src="imgSrc" :alt="title" />
+      <img :src="imgSrc" :alt="title" loading="lazy" />
     </div>
 
     <div class="block__title" v-html="title"></div>
@@ -13,6 +13,7 @@
     <Btn
       :text="btnName"
       class="w-100"
+      @click.native.prevent="$store.dispatch('setShowPopupFeedback', true)"
     />
   </div>
 </template>

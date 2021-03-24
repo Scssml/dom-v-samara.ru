@@ -21,47 +21,47 @@ export default {
   },
   data() {
     return {
-      title: 'Заголовок, отражающий суть преимуществ работы с Вами',
+      title: 'Мы поможем сэкономить на строительстве дома без потери качества работ',
       advantagesList: [
         {
-          name: 'Материалы со скидкой от производителя',
+          name: 'Геология в подарок',
           imgSrc: require('@/assets/img/advantagesTabs/img-1.jpg'),
-          title: 'Качественные материалы со скидкой 20%',
-          text: 'Короткий текст о том, что закупаете материалы у производителей с сертификатами качества и партнерской скидкой',
+          title: 'Геология в подарок',
+          text: 'Геологические изыскания помогут сэкономить на фундаментных работах и значительно продлят срок службы фундамента. Дом простоит более 200 лет',
         },
         {
-          name: 'Собственная спец техника',
-          imgSrc: require('@/assets/img/advantagesTabs/img-1.jpg'),
-          title: 'Собственная спец техника',
-          text: 'Короткий текст о том, что закупаете материалы у производителей с сертификатами качества и партнерской скидкой',
+          name: 'Скидка на материалы',
+          imgSrc: require('@/assets/img/advantagesTabs/img-2.jpg'),
+          title: 'Скидка на материалы',
+          text: 'Мы закупаем материалы у партнеров со скидкой, что позволяет нам снизить стоимость строительства Вашего дома',
         },
         {
-          name: 'Опытные бригады',
-          imgSrc: require('@/assets/img/advantagesTabs/img-1.jpg'),
-          title: 'Опытные бригады',
-          text: 'Короткий текст о том, что закупаете материалы у производителей с сертификатами качества и партнерской скидкой',
+          name: 'Экономия на технике',
+          imgSrc: require('@/assets/img/advantagesTabs/img-3.jpg'),
+          title: 'Экономия на технике',
+          text: 'Наличие собственной техники позволяет снизить стоимость ее привлечения в смете на 20-30%',
         },
         {
-          name: 'Дом под ключ',
-          imgSrc: require('@/assets/img/advantagesTabs/img-1.jpg'),
-          title: 'Дом под ключ',
-          text: 'Короткий текст о том, что закупаете материалы у производителей с сертификатами качества и партнерской скидкой',
+          name: 'Гарантия 5 лет',
+          imgSrc: require('@/assets/img/advantagesTabs/img-4.jpg'),
+          title: 'Гарантия 5 лет',
+          text: 'Гарантия прописана  в договоре. Выполним обязательства даже если Вы позвоните через 4 года и 360 дней',
         },
         {
-          name: 'Проектирование на 2х дешевле среднерыночной',
-          imgSrc: require('@/assets/img/advantagesTabs/img-1.jpg'),
-          title: 'Проектирование на 2х дешевле среднерыночной',
-          text: 'Короткий текст о том, что закупаете материалы у производителей с сертификатами качества и партнерской скидкой',
+          name: 'Проект по себестоимости',
+          imgSrc: require('@/assets/img/advantagesTabs/img-5.jpg'),
+          title: 'Проект по себестоимости',
+          text: 'Наша задача - построить дом. Поэтому мы готовы сделать проект по себестоимости - от 150 руб. за м2',
         },
         {
-          name: 'Даем гарантию 5 лет',
-          imgSrc: require('@/assets/img/advantagesTabs/img-1.jpg'),
-          title: 'Даем гарантию 5 лет',
-          text: 'Короткий текст о том, что закупаете материалы у производителей с сертификатами качества и партнерской скидкой',
+          name: 'Опыт бригад 10 лет',
+          imgSrc: require('@/assets/img/advantagesTabs/img-6.jpg'),
+          title: 'Опыт бригад 10 лет',
+          text: 'Опыт работы позволяет не закладывать в смету резерв на исправление ошибок. Мы построим дом без ошибок и переработок',
         },
       ],
       formBlock: {
-        imgSrc: require('@/assets/img/formBlock1/bg.png'),
+        imgSrc: require('@/assets/img/formBlock1/bg.webp'),
         title: 'Запишитесь на бесплатную консультацию со строительным консультантом',
         text: '<b>Строительный консультант поможет:</b>',
         list: [
@@ -87,6 +87,7 @@ export default {
           id: 'advantagesTabs',
         },
       },
+      sectionTop: null,
     };
   },
 };
@@ -95,8 +96,8 @@ export default {
 <style lang="scss" scoped>
   .section {
     background-color: #F5F5F5;
-    background-image: url(~@/assets/img/block2/bg-left.png),
-      url(~@/assets/img/block2/bg-right.png);
+    background-image: url(~@/assets/img/block2/bg-left.webp),
+      url(~@/assets/img/block2/bg-right.webp);
     background-repeat: no-repeat;
     background-position: 0 0, 100% calc(100% - 125px);
     padding: 92px 0;

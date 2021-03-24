@@ -18,6 +18,7 @@
             :text="btnName"
             :big="true"
             class="w-100"
+            @click.native.prevent="$store.dispatch('setShowPopupQuiz', true)"
           />
         </div>
 

@@ -103,21 +103,11 @@ export default {
 
       if (this.checkForm) {
         this.btnLoading = true;
-        const action = '/local/ajax/form.php';
-        const url = new URL(window.location);
-        const arUtm = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
-        const props = {
-          web: url,
-        };
+        const action = '/ajax/form.php';
+        const props = {};
 
         this.fields.forEach((item) => {
           props[item.name] = item.value;
-        });
-
-        arUtm.forEach((item) => {
-          if (url.searchParams.has(item)) {
-            props[item] = url.searchParams.get(item);
-          }
         });
 
         axios

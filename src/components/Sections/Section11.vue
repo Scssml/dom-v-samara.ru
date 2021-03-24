@@ -22,14 +22,14 @@ export default {
       mabBlock: {
         mapSettings: {
           apiKey: '0f36e4b1-a183-430d-ade7-6581f26610bd',
-          center: [53.195954, 50.220025],
+          center: [],
           zoom: 14,
           controls: [],
           scrollZoom: false,
           showAllMarkers: false,
           markers: [
             {
-              coords: [53.195954, 50.240492],
+              coords: [53.192215, 50.168834],
             },
           ],
         },
@@ -38,12 +38,12 @@ export default {
             Доверьте строительство
             <br>дома профессионалам
           `,
-          address: 'г. Самара, Заводское шоссе 14Ак1',
+          address: 'г. Самара, Партизанская 80а',
           phone: '+7 (927) 260-55-09',
-          mail: 'info@fundament-toliyatti.ru',
+          mail: 'info@dom-v-samara.ru',
           hint: `
             Оставьте номер телефона. Строительный консультант свяжется с Вами для того,
-            чтобы помоч. Это ни к чему не обязывает.
+            чтобы помочь. Это ни к чему не обязывает.
           `,
           formProps: {
             input: {
@@ -63,24 +63,10 @@ export default {
       },
     };
   },
+  created() {
+    const windowWidth = document.documentElement.clientWidth;
+    const center = (windowWidth <= 575) ? [53.182555, 50.168834] : [53.195954, 50.15000];
+    this.mabBlock.mapSettings.center = center;
+  },
 };
 </script>
-
-<style lang="scss" scoped>
-  .section {
-    background-color: #F5F5F5;;
-    background-image: url(~@/assets/img/block10/bg-left.png),
-      url(~@/assets/img/block10/bg-right.png);
-    background-repeat: no-repeat;
-    background-position: 25px calc(100% - 79px), calc(100% - 76px) 358px;
-    padding: 92px 0;
-
-    &__title {
-      margin-bottom: 40px;
-    }
-
-    &__tabs {
-      margin-bottom: 76px;
-    }
-  }
-</style>

@@ -3,7 +3,7 @@
     <template v-if="href">
       <a href="#">
         <template v-if="iconSrc">
-          <img :src="iconSrc" aly="icon" />
+          <img :src="iconSrc" aly="icon" loading="lazy" />
         </template>
 
         <template v-else>
@@ -15,7 +15,7 @@
     <template v-else>
       <button>
         <template v-if="iconSrc">
-          <img :src="iconSrc" aly="icon" />
+          <img :src="iconSrc" aly="icon" loading="lazy" />
         </template>
 
         <template v-else>
@@ -151,6 +151,10 @@ export default {
 
     &--big {
       height: 78px;
+
+      @media (max-width: 575px) {
+        height: 68px;
+      }
     }
 
     &--border {
@@ -165,6 +169,10 @@ export default {
     &--icon {
       min-width: initial;
       border-radius: 5px;
+    }
+
+    &:hover {
+      background: linear-gradient(180deg, #4476F9 0%, #3D71F8 75.78%);
     }
   }
 </style>

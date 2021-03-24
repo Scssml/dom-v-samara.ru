@@ -8,7 +8,7 @@
           <div class="section__text" v-html="text"></div>
 
           <div class="row justify-content-center justify-content-md-start">
-            <div class="col-8 col-md-6 col-lg-5 col-xl-4 col-xxl-5">
+            <div class="col-auto col-sm-8 col-md-6 col-lg-5 col-xl-4 col-xxl-5">
               <Form
                 :items="form.items"
                 :btnName="form.btnName"
@@ -64,7 +64,7 @@ export default {
       },
       hint: `
         Оставьте номер телефона. Строительный консультант свяжется с Вами для того,
-        чтобы помоч. Это ни к чему не обязывает.
+        чтобы помочь. Это ни к чему не обязывает.
       `,
     };
   },
@@ -77,7 +77,7 @@ export default {
     background-image: url(~@/assets/img/block6/bg.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: left bottom;
+    background-position: bottom;
     padding: 100px 0 117px;
 
     &__title {
@@ -86,6 +86,10 @@ export default {
 
     &__text {
       margin-bottom: 87px;
+    }
+
+    @media (max-width: 575px) {
+      padding: 40px 0;
     }
   }
 </style>

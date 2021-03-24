@@ -63,6 +63,7 @@ export default {
 
       &-slide {
         padding: 15px;
+        height: initial;
       }
 
       &-pagination-bullet {

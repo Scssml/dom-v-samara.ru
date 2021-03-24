@@ -10,8 +10,28 @@
               :imgSrc="item.imgSrc"
               :name="item.title"
               :props="item.props"
+              :planSrc="item.planSrc"
+              @showPopup="showProjectPopup = index"
             />
           </div>
+        </template>
+
+        <template v-for="(item, index) in projectList">
+          <Popup
+            :value="showProjectPopup === index"
+            :small="false"
+            @close="showProjectPopup = null"
+            :key="`popup-project-${index}`"
+          >
+            <h2 class="text-center mb-3" v-html="popupTitle"></h2>
+            <p class="text-center mb-4">дом "{{ item.title }}"</p>
+
+            <template v-if="item.planSrc">
+              <div class="text-center">
+                <img :src="item.planSrc" :alt="item.title" loading="lazy" />
+              </div>
+            </template>
+          </Popup>
         </template>
 
         <div class="section__slider col-md-7 col-lg-8 d-xl-none">
@@ -25,6 +45,8 @@
                   :imgSrc="item.imgSrc"
                   :name="item.title"
                   :props="item.props"
+                  :planSrc="item.planSrc"
+                  @showPopup="showProjectPopup = index"
                 />
               </SwiperSlide>
             </template>
@@ -48,6 +70,7 @@ import Slider from '@/components/Base/Slider.vue';
 import { SwiperSlide } from 'vue-awesome-swiper';
 import ProjectItem from '@/components/Base/ProjectItem.vue';
 import CatalogBlock from '@/components/Base/CatalogBlock.vue';
+import Popup from '@/components/Base/Popup.vue';
 
 export default {
   name: 'Section3',
@@ -56,10 +79,11 @@ export default {
     SwiperSlide,
     ProjectItem,
     CatalogBlock,
+    Popup,
   },
   data() {
     return {
-      title: 'Проекты домов',
+      title: 'Популярные проекты 2020 года',
       sliderBreakpoints: {
         992: {
           slidesPerView: 2,
@@ -92,6 +116,7 @@ export default {
               value: 'терраса',
             },
           ],
+          planSrc: require('@/assets/img/projects/plan-1.jpg'),
         },
         {
           imgSrc: require('@/assets/img/projects/img-2.jpg'),
@@ -110,6 +135,7 @@ export default {
               value: 'гараж',
             },
           ],
+          planSrc: require('@/assets/img/projects/plan-2.jpg'),
         },
         {
           imgSrc: require('@/assets/img/projects/img-3.jpg'),
@@ -128,14 +154,38 @@ export default {
               value: '3 ванные комнаты',
             },
           ],
+          planSrc: require('@/assets/img/projects/plan-3.jpg'),
         },
       ],
       catalogBlock: {
-        imgSrc: require('@/assets/img/projects/catalog.png'),
+        imgSrc: require('@/assets/img/projects/catalog.webp'),
         title: 'Дом Вашей мечты',
         text: 'Не можете найти дом, удовлетворяющий всем требованиям? Мы поможем создать планировку Вашей мечты.',
       },
+      showProjectPopup: null,
+      popupTitle: 'Возможные планировки дома',
     };
+  },
+  computed: {
+    disablePopupSpecial() {
+      return this.$store.getters.getDisablePopupSpecial;
+    },
+  },
+  methods: {
+    scrollPage() {
+      const section = document.getElementById('projects');
+      const sectionBox = section.getBoundingClientRect();
+      const disablePopupSpecialStorage = sessionStorage.getItem('disablePopupSpecial');
+
+      if (sectionBox.top <= 100 && !this.disablePopupSpecial && !disablePopupSpecialStorage) {
+        this.$store.dispatch('setShowPopupSpecial', true);
+        window.removeEventListener('scroll', this.scrollPage, { passive: true });
+      }
+    },
+  },
+  created() {
+    // this.$store.dispatch('setShowPopupSpecial', true);
+    window.addEventListener('scroll', this.scrollPage, { passive: true });
   },
 };
 </script>
@@ -143,8 +193,8 @@ export default {
 <style lang="scss" scoped>
   .section {
     background-color: #FBFBFB;
-    background-image: url(~@/assets/img/block3/bg-left.png),
-      url(~@/assets/img/block3/bg-right.png);
+    background-image: url(~@/assets/img/block3/bg-left.webp),
+      url(~@/assets/img/block3/bg-right.webp);
     background-repeat: no-repeat;
     background-position: 37px 50%, calc(100% - 145px) 95px;
     padding: 92px 0;
@@ -158,6 +208,11 @@ export default {
       @media (max-width: 767px) {
         margin-bottom: 82px;
       }
+    }
+
+    @media (max-width: 991px) {
+      background-image: url(~@/assets/img/block3/bg-left.webp),
+        none;
     }
 
     @media (max-width: 575px) {

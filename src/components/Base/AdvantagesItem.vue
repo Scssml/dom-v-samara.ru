@@ -2,7 +2,7 @@
   <div class="block">
     <template v-if="imgSrc">
       <div class="block__img">
-        <img :src="imgSrc" :alt="(title) ? title : imgSrc"/>
+        <img :src="imgSrc" :alt="(title) ? title : imgSrc" loading="lazy" />
       </div>
     </template>
 

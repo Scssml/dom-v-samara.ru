@@ -18,7 +18,7 @@
 <style lang="scss">
   .sk-fading-circle {
     $spinkit-size: 54px !default;
-    $spinkit-spinner-color: #EB1338 !default;
+    $spinkit-spinner-color: #275DE0 !default;
     $circleCount: 12;
     $animationDuration: 1.2s;
 

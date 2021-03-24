@@ -1,5 +1,5 @@
 <template>
-  <label class="d-block mb-0">
+  <label class="d-block">
     <input
       :type="type"
       :name="name"
@@ -61,20 +61,23 @@ export default {
 };
 </script>
 
-<style lang="scss">
-  .input {
-    width: 100%;
-    max-width: 352px;
-    height: 62px;
-    background: #fff;
-    border: 1px solid #D7DBDD;
-    border-radius: 7px;
-    padding: 0 15px;
-    outline: none;
+<style lang="scss" scoped>
+  label {
     margin-bottom: 23px;
-    box-shadow: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
+
+    .input {
+      width: 100%;
+      max-width: 352px;
+      height: 62px;
+      background: #fff;
+      border: 1px solid #D7DBDD;
+      border-radius: 7px;
+      padding: 0 15px;
+      outline: none;
+      box-shadow: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+    }
   }
 </style>

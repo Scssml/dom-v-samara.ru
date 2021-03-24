@@ -3,12 +3,27 @@
     <div class="container">
       <div class="row align-items-center justify-content-between">
         <div class="col-md-auto col-xl-7">
-          <div class="row align-items-center">
-            <div class="col-lg-auto">
+          <div class="row align-items-center justify-content-between">
+            <div class="col-auto">
               <Logo
                 :src="logo.src"
                 :text="logo.text"
               />
+            </div>
+
+            <div class="col-auto d-md-none">
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <PhoneBtn :tel="tel" />
+                </div>
+
+                <div class="col-auto">
+                  <Burger
+                    :active="showSidebar"
+                    @click.native.prevent="$store.dispatch('setShowSidebar', !showSidebar)"
+                  />
+                </div>
+              </div>
             </div>
 
             <div class="col-lg-7 d-none d-xl-block">
@@ -31,6 +46,7 @@
                 :small="true"
                 :border="false"
                 :shadow="false"
+                @click.native.prevent="$store.dispatch('setShowPopupFeedback', true)"
               />
             </div>
           </div>
@@ -43,19 +59,23 @@
 <script>
 import Logo from '@/components/Base/Logo.vue';
 import Phone from '@/components/Base/Phone.vue';
+import PhoneBtn from '@/components/Base/PhoneBtn.vue';
 import Btn from '@/components/Base/Btn.vue';
+import Burger from '@/components/Base/Burger.vue';
 
 export default {
   name: 'Header',
   components: {
     Logo,
     Phone,
+    PhoneBtn,
     Btn,
+    Burger,
   },
   data() {
     return {
       logo: {
-        src: require('@/assets/img/logo.png'),
+        src: require('@/assets/img/logo.webp'),
         text: 'Фундамент Волга',
       },
       slogan: `
@@ -68,6 +88,11 @@ export default {
         text: 'Заказать звонок',
       },
     };
+  },
+  computed: {
+    showSidebar() {
+      return this.$store.getters.getShowSidebar;
+    },
   },
 };
 </script>

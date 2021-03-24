@@ -2,7 +2,7 @@
   <div class="block" :style="bgImage">
     <template v-if="imgSrc">
       <div class="block__img d-none d-lg-block">
-        <img :src="imgSrc" alt="form-img" />
+        <img :src="imgSrc" alt="form-img" loading="lazy" />
       </div>
     </template>
 
@@ -95,6 +95,11 @@ export default {
       font-size: 28px;
       line-height: 48px;
       margin-bottom: 14px;
+
+      @media (max-width: 575px) {
+        font-size: 17px;
+        line-height: 22px;
+      }
     }
 
     &__text {
@@ -114,6 +119,10 @@ export default {
         width: 100%;
         height: 100%;
       }
+    }
+
+    @media (max-width: 575px) {
+      padding: 20px;
     }
   }
 </style>

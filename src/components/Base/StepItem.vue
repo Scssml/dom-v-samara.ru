@@ -1,7 +1,7 @@
 <template>
   <div class="block">
     <div class="block__img">
-      <img :src="imgSrc" alt="icon" />
+      <img :src="imgSrc" alt="icon" loading="lazy" />
     </div>
 
     <List :list="list" />
@@ -37,6 +37,7 @@ export default {
     border-radius: 15px;
     padding: 30px 30px 35px;
     line-height: 27px;
+    height: 100%;
 
     &__img {
       width: 48px;

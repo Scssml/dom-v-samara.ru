@@ -77,11 +77,19 @@ export default {
           transform: rotate(0);
         }
       }
+
+      @media (max-width: 575px) {
+        font-size: 16px;
+      }
     }
 
     &__text {
       line-height: 27px;
       margin-top: 15px;
+    }
+
+    @media (max-width: 575px) {
+      padding: 10px 15px;
     }
   }
 </style>

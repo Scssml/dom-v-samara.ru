@@ -1,9 +1,11 @@
 <template>
   <div class="block">
     <div class="block__header">
-      <div class="block__img">
-        <img :src="imgSrc" alt="staff" />
-      </div>
+      <template v-if="imgSrc">
+        <div class="block__img">
+          <img :src="imgSrc" alt="staff" loading="lazy" />
+        </div>
+      </template>
 
       <div>
         <div class="block__name">{{ name }}</div>
@@ -22,7 +24,7 @@ export default {
   props: {
     imgSrc: {
       type: String,
-      required: true,
+      required: false,
     },
     name: {
       type: String,
@@ -56,6 +58,10 @@ export default {
       border-bottom: 1px solid #F1F1F1;
       display: flex;
       align-items: center;
+
+      @media (max-width: 575px) {
+        padding: 0 15px;
+      }
     }
 
     &__img {
@@ -67,12 +73,19 @@ export default {
       justify-content: center;
       align-items: center;
       margin-right: 33px;
+      flex-shrink: 0;
 
       img {
         object-fit: scale-down;
         object-position: center;
         width: 95%;
         height: 95%;
+      }
+
+      @media (max-width: 575px) {
+        width: 65px;
+        height: 65px;
+        margin-right: 15px;
       }
     }
 
@@ -83,6 +96,10 @@ export default {
       line-height: 30px;
       text-transform: uppercase;
       margin-bottom: 13px;
+
+      @media (max-width: 575px) {
+        font-size: 14px;
+      }
     }
 
     &__post {
@@ -126,6 +143,14 @@ export default {
 
     &__text {
       padding: 20px 40px 0;
+
+      @media (max-width: 575px) {
+        padding: 10px 15px 0;
+      }
     }
+
+    @media (max-width: 575px) {
+        padding: 10px 0 20px;
+      }
   }
 </style>

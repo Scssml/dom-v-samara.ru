@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-lg-5 d-none d-lg-block">
         <div class="block__img">
-          <img :src="imgSrc" :alt="title" />
+          <img :src="imgSrc" :alt="title" loading="lazy" />
         </div>
       </div>
 
@@ -43,6 +43,7 @@
         <Btn
           :text="btnName"
           class="block__btn"
+          @click.native.prevent="$store.dispatch('setShowPopupFeedback', true)"
         />
       </div>
     </div>
@@ -118,10 +119,20 @@ export default {
       line-height: 30px;
       text-transform: uppercase;
       margin-bottom: 18px;
+
+      @media (max-width: 575px) {
+        font-size: 14px;
+        line-height: 22px;
+        text-align: center;
+      }
     }
 
     &__props-list {
       margin-bottom: 32px;
+
+      @media (max-width: 575px) {
+        margin-bottom: 20px;
+      }
     }
 
     &__prop {
@@ -138,6 +149,14 @@ export default {
         line-height: 21px;
         text-transform: uppercase;
         color: #F3AF01;
+
+        @media (max-width: 575px) {
+          font-size: 12px;
+        }
+      }
+
+      @media (max-width: 575px) {
+        font-size: 17px;
       }
     }
 
@@ -145,6 +164,11 @@ export default {
       font-size: 16px;
       line-height: 35px;
       margin-top: 15px;
+
+      @media (max-width: 575px) {
+        font-size: 14px;
+        line-height: 22px;
+      }
     }
 
     &__btn {

@@ -38,7 +38,12 @@
 
       <div class="text-center">
         <template v-if="compare">
-          <a :href="compare.link" target="_blank" class="section__compare-link">
+          <a
+            :href="compare.link"
+            target="_blank"
+            class="section__compare-link"
+            @click.prevent="showPopup = true"
+          >
             {{ compare.text }}
           </a>
         </template>
@@ -68,10 +73,24 @@
               :text="payBlock.col2.btnName"
               :big="true"
               class="section__btn"
+              @click.native.prevent="$store.dispatch('setShowPopupFeedback', true)"
             />
         </template>
       </InfoBlock2Col>
     </div>
+
+    <Popup
+      :value="showPopup"
+      :small="false"
+      @close="showPopup = false"
+    >
+      <h2 class="text-center mb-4" v-html="PopupBlock.title"></h2>
+
+      <Table
+        :head="PopupBlock.table.head"
+        :value="PopupBlock.table.value"
+      />
+    </Popup>
   </section>
 </template>
 
@@ -81,6 +100,8 @@ import { SwiperSlide } from 'vue-awesome-swiper';
 import MaterialsItem from '@/components/Base/MaterialsItem.vue';
 import InfoBlock2Col from '@/components/Base/InfoBlock2Col.vue';
 import Btn from '@/components/Base/Btn.vue';
+import Popup from '@/components/Base/Popup.vue';
+import Table from '@/components/Base/Table.vue';
 
 export default {
   name: 'Section4',
@@ -90,11 +111,14 @@ export default {
     MaterialsItem,
     InfoBlock2Col,
     Btn,
+    Popup,
+    Table,
   },
   data() {
     return {
       title: 'Цены и условия оплаты',
       subTitle: 'Используем ТОП 3 материала для строительства',
+      showPopup: false,
       sliderBreakpoints: {
         768: {
           slidesPerView: 2.2,
@@ -117,44 +141,87 @@ export default {
           imgSrc: require('@/assets/img/materials/img-1.jpg'),
           name: 'Газобетон',
           text: 'Теплый и прочный дом с небольшим весом',
-          price: 'от 1.900.000 ₽',
+          price: '20 - 21 тыс. руб. за м2',
         },
         {
           imgSrc: require('@/assets/img/materials/img-2.jpg'),
-          name: 'Кирпич',
-          text: 'Обладает высокой тепло и звукоизоляцией',
-          price: 'от 1.900.000 ₽',
+          name: 'Керамзитоблок',
+          text: 'Высокая прочность материала',
+          price: '20 - 21 тыс. руб. за м2',
         },
         {
           imgSrc: require('@/assets/img/materials/img-3.jpg'),
           name: 'Керамический блок',
-          text: 'Максимальные теплоизоляционные свойства',
-          price: 'от 1.900.000 ₽',
+          text: 'Легкий и экологичный материал',
+          price: '21 - 23 тыс. руб. за м2',
         },
       ],
       compare: {
         link: '#',
         text: 'Показать таблицу сравнения с другими материалами',
       },
+      PopupBlock: {
+        title: 'Таблица сравнения Газобетон и Керамзитоблок',
+        table: {
+          head: [
+            '',
+            'Газобетон',
+            'Керамзитоблок',
+          ],
+          value: [
+            [
+              'Теплоизоляционные свойства',
+              'Хорошо сохраняет тепло - можно сэкономить на утеплителе (в некоторых случаях он не понадобится)',
+              'Обязательно использование утеплителя',
+            ],
+            [
+              'Особенности укладки',
+              'Укладывается на клеевой раствор, что минимизирует мостики холода',
+              'Укладывается на цементный раствор',
+            ],
+            [
+              'Геометрия',
+              'Правильная геометрия, не нужно тратиться на толстый слой штукатурки',
+              'Не такой ровный, как газобетон, потребуется штукатурка стен',
+            ],
+            [
+              'Цена',
+              `
+                $$. Стоимость постройки дома не отличается от стоимости дома из керамзитоблока за счет меньшего
+                количества кубометров материала для строительства
+              `,
+              `
+                $. Из-за размеров и тяжести материала необходимо большее кол-во кубометров, чем при использовании
+                газобетона
+              `,
+            ],
+            [
+              'Срок строительства',
+              'Значительно уменьшается срок строительства за счет особенностей материала',
+              '—',
+            ],
+          ],
+        },
+      },
       smallText: 'Все материалы соответствуют ГОСТам и стандартам качества',
       payBlock: {
         col1: {
-          title: 'Оплата по этапам',
+          title: 'ПОЭТАПНАЯ ОПЛАТА',
           list: [
-            '<b>1 этап</b> - 3% при подписании договора',
-            '<b>2 этап</b> -  15% при уведомлении о начале строительных работ',
-            '<b>3 этап</b> -  20% при уведомлении об окончании работ по изготовлению фундамента',
-            '<b>4 этап</b> -  24% возведение первого этажа',
-            '<b>5 этап</b> -  20% монтаж кровельного покрытия',
-            '<b>6 этап</b> -  15% начало работ по наружной отделке',
-            '<b>7 этап</b> -  3% при окончании строительства',
+            '<b>1 этап</b> - при подписании договора',
+            '<b>2 этап</b> - при уведомлении о начале строительных работ',
+            '<b>3 этап</b> - при уведомлении об окончании работ по изготовлению фундамента',
+            '<b>4 этап</b> - возведение первого этажа',
+            '<b>5 этап</b> - монтаж кровельного покрытия',
+            '<b>6 этап</b> - начало работ по наружной отделке',
+            '<b>7 этап</b> - при окончании строительства',
           ],
         },
         col2: {
           title: 'Оплата в кредит',
           text: `
-            <p>Для более комфортного сотрудничества мы предлагаем своим клиентам различные виды кредитования.</p>
-            <p>Нужна консультация или квалифицированная помощь в подборе наиболее выгодных условий кредитования? Оставляйте заявку на сайте и мы обязательно найдем подходящее именно вам решение.</p>
+            <p>Для более комфортного сотрудничества мы предлагаем своим клиентам помощь в получении кредита.</p>
+            <p>Нужна помощь в подборе наиболее выгодных условий кредитования? Оставляйте заявку на сайте и мы обязательно поможем Вам подобрать кредит через наших партнеров.</p>
           `,
           btnName: 'Получить консультацию',
         },
@@ -167,7 +234,7 @@ export default {
 <style lang="scss" scoped>
   .section {
     background-color: #FBFBFB;
-    background-image: url(~@/assets/img/block4/bg-right.png),
+    background-image: url(~@/assets/img/block4/bg-right.webp),
       url(~@/assets/img/block4/bg.jpg);
     background-repeat: no-repeat;
     background-position: 100% calc(100% + 200px), 0 0;
@@ -242,6 +309,10 @@ export default {
       @media (max-width: 575px) {
         max-width: 100%;
       }
+    }
+
+    @media (max-width: 991px) {
+      background-position: 100% calc(100% + 200px), center;
     }
 
     @media (max-width: 575px) {

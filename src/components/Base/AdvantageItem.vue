@@ -1,7 +1,7 @@
 <template>
   <div class="block">
     <div class="block__img">
-      <img :src="imgSrc" :alt="text" />
+      <img :src="imgSrc" :alt="text" loading="lazy" />
     </div>
 
     <div v-html="text"></div>
@@ -56,11 +56,23 @@ export default {
       @media (max-width: 1199px) {
         position: static;
         margin-right: 24px;
+        flex-shrink: 0;
+      }
+
+      @media (max-width: 575px) {
+        width: 90px;
+        height: 80px;
       }
     }
 
     @media (max-width: 1199px) {
       padding: 17px 24px;
+    }
+
+    @media (max-width: 575px) {
+      font-size: 12px;
+      line-height: 16px;
+      padding: 5px 15px;
     }
   }
 </style>

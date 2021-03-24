@@ -92,6 +92,11 @@ export default {
       line-height: 30px;
       text-transform: uppercase;
       margin-bottom: 11px;
+
+      @media (max-width: 575px) {
+        font-size: 14px;
+        line-height: 22px;
+      }
     }
 
     &__address {
@@ -125,6 +130,12 @@ export default {
         border-left: 15px solid transparent;
         left: -15px;
         top: 0;
+
+        @media (max-width: 575px) {
+            border-bottom: 30px solid #F3AF01;
+            border-left: 10px solid transparent;
+            left: -10px;
+        }
       }
 
       &:after {
@@ -132,6 +143,17 @@ export default {
         border-right: 15px solid transparent;
         right: -15px;
         top: 0;
+
+        @media (max-width: 575px) {
+          border-top: 30px solid #F3AF01;
+          border-right: 10px solid transparent;
+          right: -10px;
+        }
+      }
+
+      @media (max-width: 575px) {
+        font-size: 16px;
+        line-height: 24px;
       }
     }
 
@@ -148,10 +170,16 @@ export default {
       margin-top: 24px;
       margin-bottom: 16px;
       text-align: left;
+
+      @media (max-width: 575px) {
+        font-size: 12px;
+        line-height: 22px;
+      }
     }
 
     @media (max-width: 575px) {
       width: 100%;
+      padding: 20px;
     }
   }
 </style>

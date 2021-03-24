@@ -1,49 +1,98 @@
 <template>
   <div id="app">
+    <HeaderFixed />
     <Section1 />
+
+    <div id="advantages"></div>
     <Section2 />
+
+    <div id="projects"></div>
     <Section3 />
+
+    <div id="prices"></div>
     <Section4 />
+
     <Section5 />
-    <!-- <Section6 /> -->
-    <!-- <Section7 /> -->
-    <!-- <Section8 /> -->
-    <!-- <Section9 /> -->
-    <!-- <Section10 /> -->
-    <!-- <Section11 /> -->
-    <!-- <Footer /> -->
+
+    <Section6 />
+
+    <div id="about"></div>
+    <Section7 />
+
+    <Section8 />
+
+    <Section9 />
+
+    <Section10 />
+
+    <div id="contacts"></div>
+    <Section11 />
+
+    <Footer />
+
+    <PopupQuiz />
+
+    <PopupFeedback />
+
+    <PopupSpecial/>
+
+    <Sidebar />
   </div>
 </template>
 
 <script>
+import HeaderFixed from '@/components/Sections/HeaderFixed.vue';
 import Section1 from '@/components/Sections/Section1.vue';
 import Section2 from '@/components/Sections/Section2.vue';
 import Section3 from '@/components/Sections/Section3.vue';
 import Section4 from '@/components/Sections/Section4.vue';
 import Section5 from '@/components/Sections/Section5.vue';
-// import Section6 from '@/components/Sections/Section6.vue';
-// import Section7 from '@/components/Sections/Section7.vue';
-// import Section8 from '@/components/Sections/Section8.vue';
-// import Section9 from '@/components/Sections/Section9.vue';
-// import Section10 from '@/components/Sections/Section10.vue';
-// import Section11 from '@/components/Sections/Section11.vue';
-// import Footer from '@/components/Sections/Footer.vue';
+import Section6 from '@/components/Sections/Section6.vue';
+import Section7 from '@/components/Sections/Section7.vue';
+import Section8 from '@/components/Sections/Section8.vue';
+import Section9 from '@/components/Sections/Section9.vue';
+import Section10 from '@/components/Sections/Section10.vue';
+import Section11 from '@/components/Sections/Section11.vue';
+import Footer from '@/components/Sections/Footer.vue';
+import PopupQuiz from '@/components/Sections/PopupQuiz.vue';
+import PopupFeedback from '@/components/Sections/PopupFeedback.vue';
+import PopupSpecial from '@/components/Sections/PopupSpecial.vue';
+import Sidebar from '@/components/Sections/Sidebar.vue';
 
 export default {
   name: 'App',
   components: {
+    HeaderFixed,
     Section1,
     Section2,
     Section3,
     Section4,
     Section5,
-    // Section6,
-    // Section7,
-    // Section8,
-    // Section9,
-    // Section10,
-    // Section11,
-    // Footer,
+    Section6,
+    Section7,
+    Section8,
+    Section9,
+    Section10,
+    Section11,
+    Footer,
+    PopupQuiz,
+    PopupFeedback,
+    PopupSpecial,
+    Sidebar,
+  },
+  methods: {
+    scrollPage(event) {
+      const scrollTop = this.getBodyScrollTop(event);
+      this.$store.dispatch('setScrollTop', scrollTop);
+    },
+    getBodyScrollTop(event) {
+      return event.pageYOffset
+        || (event.target.documentElement && event.target.documentElement.scrollTop)
+        || (event.target.body && event.target.body.scrollTop);
+    },
+  },
+  created() {
+    window.addEventListener('scroll', this.scrollPage, { passive: true });
   },
 };
 </script>
@@ -162,5 +211,11 @@ export default {
 
   .footer a {
     color: #000;
+  }
+
+  .d-xxl-block {
+    @media (min-width: 1322px) {
+      display: block !important;
+    }
   }
 </style>

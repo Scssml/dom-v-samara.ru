@@ -9,14 +9,18 @@
           />
         </div>
 
-        <div class="col-sm-auto" v-html="rightText"></div>
+        <div class="col-sm-auto text-center" v-html="rightText"></div>
 
         <div class="col-lg-auto mt-3 mt-lg-0 order-lg-first text-center" v-html="leftText"></div>
       </div>
     </div>
 
     <div class="footer__bottom">
-      <div class="container" v-html="bottomText"></div>
+      <div class="container">
+        <div v-html="bottomText"></div>
+
+        Создание сайтов - <a href="https://seoprostor.ru/" target="_blank">SEO Простор</a>
+      </div>
     </div>
   </footer>
 </template>
@@ -32,7 +36,7 @@ export default {
   data() {
     return {
       logo: {
-        src: require('@/assets/img/logo.png'),
+        src: require('@/assets/img/logo.webp'),
         text: 'Фундамент Волга',
       },
       leftText: '© Фундаменты Волга, Все права защищены.',
@@ -58,6 +62,16 @@ export default {
       border-top: 1px solid #F1F1F1;
       text-align: center;
       font-size: 14px;
+
+      @media (max-width: 575px) {
+        font-size: 12px;
+        line-height: 20px;
+      }
+    }
+
+    @media (max-width: 575px) {
+      font-size: 12px;
+      line-height: 20px;
     }
   }
 </style>

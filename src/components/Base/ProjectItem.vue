@@ -1,7 +1,7 @@
 <template>
   <div class="project">
     <div class="project__img">
-      <img :src="imgSrc" :alt="name" />
+      <img :src="imgSrc" :alt="name" loading="lazy" />
     </div>
 
     <div class="project__content">
@@ -29,21 +29,39 @@
 
       <Btn
         :text="btnName"
+        @click.prevent.native="showPopup()"
         class="w-100"
       />
     </div>
+
+    <!-- <Popup
+      :value="showPopup"
+      :small="false"
+      @close="showPopup = false"
+    >
+      <h2 class="text-center mb-3" v-html="popupTitle"></h2>
+      <p class="text-center mb-4">дом "{{ name }}"</p>
+
+      <template v-if="planSrc">
+        <div class="text-center">
+          <img :src="planSrc" :alt="name" loading="lazy" />
+        </div>
+      </template>
+    </Popup> -->
   </div>
 </template>
 
 <script>
 import ProjectPropItem from '@/components/Base/ProjectPropItem.vue';
 import Btn from '@/components/Base/Btn.vue';
+// import Popup from '@/components/Base/Popup.vue';
 
 export default {
   name: 'ProjectItem',
   components: {
     ProjectPropItem,
     Btn,
+    // Popup,
   },
   props: {
     imgSrc: {
@@ -59,11 +77,22 @@ export default {
       required: false,
       default: () => [],
     },
+    planSrc: {
+      type: String,
+      required: true,
+    },
   },
   data() {
     return {
       btnName: 'Подробнее',
+      // showPopup: false,
+      // popupTitle: 'Возможные планировки дома',
     };
+  },
+  methods: {
+    showPopup() {
+      this.$emit('showPopup');
+    },
   },
 };
 </script>

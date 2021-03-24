@@ -2,7 +2,7 @@
   <div class="section">
     <Header class="section__header" />
 
-    <div class="container">
+    <div class="container position-relative">
       <div class="row">
         <div class="col-xl-9 col-xxl-7">
           <h1 class="section__title" v-html="title"></h1>
@@ -21,39 +21,65 @@
           />
         </div>
       </div>
+
+      <BannerBtn
+        :imgSrc="bannerBtn.imgSrc"
+        :text="bannerBtn.text"
+        :link="bannerBtn.link"
+        class="section__banner-btn"
+        @click.native.prevent="$store.dispatch('setShowPopupFeedback', true)"
+      />
     </div>
+
+    <FixedBtn
+      :text="fixedBtn.text"
+      :iconSrc="fixedBtn.iconSrc"
+      @click.native.prevent="$store.dispatch('setShowPopupSpecial', true)"
+    />
   </div>
 </template>
 
 <script>
 import Header from '@/components/Sections/Header.vue';
 import BannerBlock from '@/components/Base/BannerBlock.vue';
+import BannerBtn from '@/components/Base/BannerBtn.vue';
+import FixedBtn from '@/components/Base/FixedBtn.vue';
 
 export default {
   name: 'Section1',
   components: {
     Header,
     BannerBlock,
+    BannerBtn,
+    FixedBtn,
   },
   data() {
     return {
       title: `
-        <b>Построим каменный дом в срок от 3 месяцев</b>
-        <br>с экономией до 350 000 руб.
+        <b>Каменный дом за 3 месяца с экономией на строительстве</b>
+        <br>до 350 000 руб.
       `,
       banner: {
         text: `
-          <b>Ответьте на 5 вопросов</b> и узнайте 
-          сроки и стоимость строительства
+          <b>Ответьте на 4 вопроса</b> и получите в подарок
         `,
         list: [
-          '<b>Подарок!</b> Бесплатный профессиональный расчет и проект фундамента',
-          '<b>Скидка!</b> 4% от стоимости работ',
-          '<b>Подарок!</b> Инструкция: "Как сэкономить на строительстве без потери качества дома"',
+          '<b>Подарок!</b> Авторский проект дома с большой террасой + цена',
+          '<b>Подарок!</b> Авторский проект дома для узкого / небольшого участка + цена',
+          '<b>Подарок!</b> Бесплатная консультация "Сократить стоимость строительства дома без потери качества"',
         ],
         btnName: 'Узнать сроки и стоимость',
         btnText: 'и получить подарки',
         smallText: 'Расчет бесплатный и ни к чему не обязывает',
+      },
+      bannerBtn: {
+        imgSrc: require('@/assets/img/banner/icon.svg'),
+        text: 'Популярный<br>проект 2020 года',
+        link: 'Узнать цену',
+      },
+      fixedBtn: {
+        text: 'Спецпредложение 2021 г.',
+        iconSrc: require('@/assets/img/fixedBtn/icon.svg'),
       },
     };
   },
@@ -85,7 +111,24 @@ export default {
     }
 
     &__banner-block {
-      margin: 0 -15px;
+
+      @media (max-width: 575px) {
+        margin: 0 -15px;
+      }
+    }
+
+    &__banner-btn {
+      position: absolute;
+      top: 250px;
+      right: 100px;
+
+      @media (max-width: 1321px) {
+        right: 50px;
+      }
+
+      @media (max-width: 1199px) {
+        display: none;
+      }
     }
 
     @media (max-width: 575px) {

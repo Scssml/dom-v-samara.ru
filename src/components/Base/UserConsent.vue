@@ -56,7 +56,8 @@ export default {
       font-size: 12px;
       line-height: 17px;
       color: #737373;
-      display: flex;
+      display: inline-flex;
+      text-align: left;
 
       &:before {
         content: '';

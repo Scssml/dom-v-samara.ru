@@ -1,6 +1,6 @@
 <template>
   <a href="/" class="logo">
-    <img :src="src" alt="logo" />
+    <img :src="src" alt="logo" loading="lazy" />
     {{ text }}
   </a>
 </template>
@@ -23,7 +23,8 @@ export default {
 
 <style lang="scss" scoped>
   .logo {
-    display: flex;
+    display: inline-flex;
+    vertical-align: middle;
     align-items: center;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
@@ -48,6 +49,10 @@ export default {
 
     @media (max-width: 991px) {
       font-size: 14px;
+    }
+
+    @media (max-width: 420px) {
+      max-width: 175px;
     }
   }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="prop">
     <div class="prop__img">
-      <img :src="icon" :alt="value" />
+      <img :src="icon" :alt="value" loading="lazy" />
     </div>
 
     {{ value }}
