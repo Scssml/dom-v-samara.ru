@@ -93,8 +93,10 @@ export default {
   },
   methods: {
     getTimer() {
+      const curTime = (new Date()).getTime();
+
       axios
-        .get('/ajax/coundown.txt')
+        .get(`/ajax/coundown.txt?v=${curTime}`)
         .then((response) => {
           this.formBlock.timer = response.data;
         });
