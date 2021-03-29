@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 import AdvantagesTabs from '@/components/Base/AdvantagesTabs.vue';
 
 export default {
@@ -69,7 +70,7 @@ export default {
           'сократить стоимость и время строительства',
           'объяснит свойства материалов',
         ],
-        timer: '2021-02-28',
+        timer: null,
         formProps: {
           items: [
             {
@@ -89,6 +90,18 @@ export default {
       },
       sectionTop: null,
     };
+  },
+  methods: {
+    getTimer() {
+      axios
+        .get('/ajax/coundown.txt')
+        .then((response) => {
+          this.formBlock.timer = response.data;
+        });
+    },
+  },
+  created() {
+    this.getTimer();
   },
 };
 </script>

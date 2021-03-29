@@ -36,6 +36,7 @@ export default {
         pagination: {
           el: `#slider-pagination-${this.id}`,
           type: 'bullets',
+          clickable: true,
         },
         breakpoints: this.breakpoints,
       };

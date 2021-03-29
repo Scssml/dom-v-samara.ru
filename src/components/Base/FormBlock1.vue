@@ -12,8 +12,12 @@
       <List :list="list" class="block__list" />
     </template>
 
-    <div class="row justify-content-center justify-content-md-start">
-      <div class="col-sm-auto col-md-12 col-lg-7">
+    <div class="row justify-content-center justify-content-md-between align-items-end">
+      <div class="col-auto col-xl-5 order-md-last" v-if="timer">
+        <CountDown :date="timer" />
+      </div>
+
+      <div class="col-auto col-md-7 col-lg-7">
         <Form
           :items="formProps.items"
           :btnName="formProps.btnName"
@@ -27,12 +31,14 @@
 <script>
 import List from '@/components/Base/List.vue';
 import Form from '@/components/Base/Form.vue';
+import CountDown from '@/components/Base/CountDown.vue';
 
 export default {
   name: 'FormBlock1',
   components: {
     List,
     Form,
+    CountDown,
   },
   props: {
     imgSrc: {

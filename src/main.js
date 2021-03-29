@@ -10,6 +10,13 @@ Vue.use(VueYandexMetrika, {
   id: 74470234,
   // env: process.env.NODE_ENV,
   env: 'production',
+  options: {
+    accurateTrackBounce: true,
+    clickmap: true,
+    trackLinks: true,
+    webvisor: true,
+    triggerEvent: true,
+  },
 });
 
 new Vue({
