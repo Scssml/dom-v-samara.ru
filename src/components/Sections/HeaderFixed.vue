@@ -71,7 +71,7 @@ export default {
         src: require('@/assets/img/logo.webp'),
         text: 'Фундамент Волга',
       },
-      tel: '+7 (927) 260-55-09',
+      tel: '8 (846) 990-55-09',
       btn: {
         text: 'Заказать звонок',
       },
