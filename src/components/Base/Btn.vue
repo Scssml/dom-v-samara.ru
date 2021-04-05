@@ -100,7 +100,8 @@ export default {
     height: 62px;
     background: linear-gradient(180deg, #8AA6F5 0%, #3D71F8 75.78%);
     border-radius: 70px;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     font-weight: 600;
     font-size: 14px;
     line-height: 25px;

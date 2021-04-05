@@ -11,13 +11,20 @@
 
       <div class="row">
         <div class="col-lg-7 col-xl-6 col-xxl-5">
-          <BannerBlock
+          <!-- <BannerBlock
             :text="banner.text"
             :list="banner.list"
             :btnName="banner.btnName"
             :btnText="banner.btnText"
             :smallText="banner.smallText"
             class="section__banner-block"
+          /> -->
+
+          <Btn
+            :text="btnName"
+            :big="true"
+            class="px-4 section__btn-icon"
+            @click.native.prevent="$store.dispatch('setShowPopupQuiz', true)"
           />
         </div>
       </div>
@@ -41,35 +48,37 @@
 
 <script>
 import Header from '@/components/Sections/Header.vue';
-import BannerBlock from '@/components/Base/BannerBlock.vue';
+// import BannerBlock from '@/components/Base/BannerBlock.vue';
 import BannerBtn from '@/components/Base/BannerBtn.vue';
 import FixedBtn from '@/components/Base/FixedBtn.vue';
+import Btn from '@/components/Base/Btn.vue';
 
 export default {
   name: 'Section1',
   components: {
     Header,
-    BannerBlock,
+    // BannerBlock,
     BannerBtn,
     FixedBtn,
+    Btn,
   },
   data() {
     return {
       title: `
-        <b>Каменный дом за 90 дней от 17 тыс. руб. за м2 с гарантией по договору</b>
+        <b>Каменный дом за 3 месяца с экономией на строительстве до 350 000 руб.</b>
       `,
       titleList: [
         {
           utm_campaign: 'GAZOBETON',
-          title: '<b> Дом из газобетона за 90 дней от 17 тыс. руб. за м2 с гарантией по договору</b>',
+          title: '<b>Дом из газобетона за 3 месяца с экономией на строительстве до 350 000 руб.</b>',
         },
         {
           utm_campaign: 'KERAMZITOBLOCK',
-          title: '<b>Дом из керамзитоблоков за 90 дней от 17 тыс. руб. за м2 с гарантией по договору</b>',
+          title: '<b>Дом из керамзитоблоков за 3 месяца с экономией на строительстве до 350 000 руб.</b>',
         },
         {
           utm_campaign: 'KERAMOBLOCK',
-          title: '<b>Дом из керамических блоков за 90 дней от 18 тыс. руб. за м2 с гарантией по договору</b>',
+          title: '<b>Дом из керамических блоков за 3 месяца с экономией на строительстве до 350 000 руб.</b>',
         },
       ],
       strGet: '',
@@ -95,6 +104,7 @@ export default {
         text: 'Спецпредложение 2021 г.',
         iconSrc: require('@/assets/img/fixedBtn/icon.svg'),
       },
+      btnName: 'Получите особое предложение',
     };
   },
   computed: {
@@ -116,6 +126,8 @@ export default {
     background-position: center;
     background-size: cover;
     padding-bottom: 47px;
+    // min-height: calc(100vh - 30px);
+    min-height: 850px;
 
     &__header {
       margin-bottom: 45px;
@@ -128,9 +140,9 @@ export default {
     &__title {
       margin-bottom: 39px;
 
-      @media (max-width: 575px) {
-        margin-bottom: 336px;
-      }
+      // @media (max-width: 575px) {
+      //   margin-bottom: 336px;
+      // }
     }
 
     &__banner-block {
@@ -154,11 +166,24 @@ export default {
       }
     }
 
+    &__btn-icon:before {
+      content: '';
+      display: block;
+      width: 36px;
+      height: 36px;
+      background-image: url(~@/assets/img/banner/gift-icon.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      flex-shrink: 0;
+      margin-right: 15px;
+    }
+
     @media (max-width: 575px) {
       background-image: url(~@/assets/img/block1/bg-small.jpg);
       background-position: top;
       background-size: auto 616px;
       padding-bottom: 0;
+      min-height: 600px;
     }
   }
 </style>
