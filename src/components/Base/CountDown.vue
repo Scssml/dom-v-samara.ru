@@ -76,12 +76,15 @@ export default {
       const day = (`0${date.getDate()}`).slice(-2);
       const month = (`0${date.getMonth() + 1}`).slice(-2);
       const year = date.getFullYear();
+      const hours = date.getHours();
 
-      return `${year}-${month}-${day}T23:59:59`;
+      return `${year}-${month}-${day}T${hours}:59:59`;
     },
     setNewTimer() {
       const dateTimer = new Date(this.utcTimer);
-      dateTimer.setDate(dateTimer.getDate() + 2);
+      // dateTimer.setDate(dateTimer.getDate() + 2);
+
+      dateTimer.setHours(dateTimer.getHours() + 5);
 
       const dateTimerStr = this.getDateStr(dateTimer);
 

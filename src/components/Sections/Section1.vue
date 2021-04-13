@@ -4,21 +4,40 @@
 
     <div class="container position-relative">
       <div class="row">
-        <div class="col-xl-9 col-xxl-7">
+        <div class="col-xl-9 col-xxl-7 text-center">
           <h1 class="section__title" v-html="showTitle"></h1>
+
+          <template v-if="textBanner.big">
+            <div class="section__text-big" v-html="textBanner.big"></div>
+          </template>
+
+          <template v-if="textBanner.medium">
+            <div class="section__text-medium" v-html="textBanner.medium"></div>
+          </template>
+
+          <Btn
+            :text="btnName"
+            :big="true"
+            class="px-4 section__btn-icon"
+            @click.native.prevent="$store.dispatch('setShowPopupQuiz', true)"
+          />
+
+          <template v-if="textBanner.small">
+            <div class="section__text-small" v-html="textBanner.small"></div>
+          </template>
         </div>
       </div>
 
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-lg-7 col-xl-6 col-xxl-5">
-          <!-- <BannerBlock
+          <BannerBlock
             :text="banner.text"
             :list="banner.list"
             :btnName="banner.btnName"
             :btnText="banner.btnText"
             :smallText="banner.smallText"
             class="section__banner-block"
-          /> -->
+          />
 
           <Btn
             :text="btnName"
@@ -27,7 +46,7 @@
             @click.native.prevent="$store.dispatch('setShowPopupQuiz', true)"
           />
         </div>
-      </div>
+      </div> -->
 
       <BannerBtn
         :imgSrc="bannerBtn.imgSrc"
@@ -65,20 +84,20 @@ export default {
   data() {
     return {
       title: `
-        <b>Каменный дом за 3 месяца с экономией на строительстве до 350 000 руб.</b>
+        <b>Дом из камня за 3 месяца</b>
       `,
       titleList: [
         {
           utm_campaign: 'GAZOBETON',
-          title: '<b>Дом из газобетона за 3 месяца с экономией на строительстве до 350 000 руб.</b>',
+          title: '<b>Дом из газобетона за 3 месяца</b>',
         },
         {
           utm_campaign: 'KERAMZITOBLOCK',
-          title: '<b>Дом из керамзитоблоков за 3 месяца с экономией на строительстве до 350 000 руб.</b>',
+          title: '<b>Дом из керамзитоблоков за 3 месяца</b>',
         },
         {
           utm_campaign: 'KERAMOBLOCK',
-          title: '<b>Дом из керамических блоков за 3 месяца с экономией на строительстве до 350 000 руб.</b>',
+          title: '<b>Дом из керамических блоков за 3 месяца</b>',
         },
       ],
       strGet: '',
@@ -104,7 +123,21 @@ export default {
         text: 'Спецпредложение 2021 г.',
         iconSrc: require('@/assets/img/fixedBtn/icon.svg'),
       },
-      btnName: 'Получите особое предложение',
+      btnName: 'Узнать стоимость',
+      textBanner: {
+        big: `
+          Сэкономим до <b>350 000</b> руб.
+          <br>на строительстве
+        `,
+        medium: `
+          Узнай ориентировочную стоимость
+          <br>за 1 минуту и получи подарок
+        `,
+        small: `
+          Помогли 130 семьям
+          <br>построить теплый дом их мечты
+        `,
+      },
     };
   },
   computed: {
@@ -128,6 +161,23 @@ export default {
     padding-bottom: 47px;
     // min-height: calc(100vh - 30px);
     min-height: 850px;
+    position: relative;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      opacity: 0.7;
+      display: none;
+
+      @media (max-width: 575px) {
+        display: block;
+      }
+    }
 
     &__header {
       margin-bottom: 45px;
@@ -143,6 +193,10 @@ export default {
       // @media (max-width: 575px) {
       //   margin-bottom: 336px;
       // }
+
+      @media (max-width: 575px) {
+        margin-bottom: 15px;
+      }
     }
 
     &__banner-block {
@@ -176,6 +230,43 @@ export default {
       background-position: center;
       flex-shrink: 0;
       margin-right: 15px;
+    }
+
+    &__text-big {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 34px;
+      line-height: 45px;
+      margin-bottom: 30px;
+
+      @media (max-width: 575px) {
+        font-size: 18px;
+        line-height: 28px;
+        margin-bottom: 15px;
+      }
+    }
+
+    &__text-medium {
+      font-size: 17px;
+      line-height: 28px;
+      margin-bottom: 30px;
+
+      @media (max-width: 575px) {
+        font-size: 15px;
+        line-height: 22px;
+        margin-bottom: 15px;
+      }
+    }
+
+    &__text-small {
+      font-size: 15px;
+      line-height: 21px;
+      margin-top: 20px;
+
+      @media (max-width: 575px) {
+        font-size: 13px;
+        line-height: 18px;
+        margin-top: 15px;
+      }
     }
 
     @media (max-width: 575px) {

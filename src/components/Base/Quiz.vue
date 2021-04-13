@@ -58,6 +58,7 @@
                         :id="`quiz-${id}-question-${questionIndex}-answer-${answerIndex}`"
                         :value="answer.name"
                         v-model="values[questionIndex]"
+                        @change="nextStep()"
                       />
                       <label
                         :for="`quiz-${id}-question-${questionIndex}-answer-${answerIndex}`"
@@ -176,7 +177,7 @@ export default {
           answers: [
             {
               name: 'до 70 м2',
-              active: true,
+              active: false,
             },
             {
               name: '70 - 100 м2',
@@ -210,7 +211,7 @@ export default {
           answers: [
             {
               name: 'Да',
-              active: true,
+              active: false,
             },
             {
               name: 'Нет',
@@ -228,7 +229,7 @@ export default {
           answers: [
             {
               name: '1',
-              active: true,
+              active: false,
             },
             {
               name: '2',
@@ -258,7 +259,7 @@ export default {
           answers: [
             {
               name: 'Да',
-              active: true,
+              active: false,
             },
             {
               name: 'Нет',

@@ -53,6 +53,7 @@
                       :id="`quiz-${id}-question-${questionIndex}-answer-${answerIndex}`"
                       :value="answer.name"
                       v-model="values[questionIndex]"
+                      @change="nextStep()"
                     />
                     <label
                       :for="`quiz-${id}-question-${questionIndex}-answer-${answerIndex}`"
@@ -77,7 +78,7 @@
     <template v-if="stepActive === 'setGift'">
       <div class="text-center mb-5">
         <div class="block__step block__step--xs-no-border mb-4">
-          ВЫ ОТВЕТИЛИ НА ВСЕ ВОПРОСЫ ВЫБЕРИТЕ ПОДАРКИ
+          ОСТАЛСЯ ВСЕГО ОДИН ШАГ ДО ПОЛУЧЕНИЯ ПОДАРКОВ
         </div>
 
         <div class="block__title">{{ gift.title }}</div>
@@ -107,7 +108,9 @@
 
     <template v-if="stepActive === 'callback'">
       <div class="text-center mb-5">
-        <div class="block__step mb-4">Остался последний шаг</div>
+        <div class="block__step block__step--xs-no-border mb-4">
+          ПОЛУЧИТЬ ПОДАРКИ И УЗНАТЬ СТОИМОСТЬ
+        </div>
 
         <div class="block__title">{{ form.title }}</div>
       </div>
@@ -199,11 +202,11 @@ export default {
       btnName: 'Узнать стоимость проекта',
       items: [
         {
-          question: 'Какую общую площадь планируете?',
+          question: 'Я хочу дом площадью:',
           answers: [
             {
               name: 'до 70 м2',
-              active: true,
+              active: false,
             },
             {
               name: '70 - 100 м2',
@@ -233,11 +236,11 @@ export default {
           answerOther: '',
         },
         {
-          question: 'Будет ли мансарда?',
+          question: 'Мне нужна мансарда?',
           answers: [
             {
               name: 'Да',
-              active: true,
+              active: false,
             },
             {
               name: 'Нет',
@@ -251,11 +254,11 @@ export default {
           answerOther: '',
         },
         {
-          question: 'Сколько спальных комнат планируется?',
+          question: 'Сколько спальных комнат я хочу?',
           answers: [
             {
               name: '1',
-              active: true,
+              active: false,
             },
             {
               name: '2',
@@ -281,11 +284,11 @@ export default {
           answerOther: '',
         },
         {
-          question: 'Планируете ли гараж в здании дома?',
+          question: 'Мне нужен гараж в здании дома?',
           answers: [
             {
               name: 'Да',
-              active: true,
+              active: false,
             },
             {
               name: 'Нет',
@@ -296,7 +299,7 @@ export default {
         },
       ],
       form: {
-        title: 'Оставьте контакты - менеджер свяжется с Вами',
+        title: 'Куда позвонить, чтобы сказать о том, как получить подарки и сказать ориентировочную стоимость проекта?',
         fields: [
           {
             name: 'name',
