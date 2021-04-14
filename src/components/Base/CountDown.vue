@@ -76,7 +76,7 @@ export default {
       const day = (`0${date.getDate()}`).slice(-2);
       const month = (`0${date.getMonth() + 1}`).slice(-2);
       const year = date.getFullYear();
-      const hours = date.getHours();
+      const hours = (`0${date.getHours()}`).slice(-2);
 
       return `${year}-${month}-${day}T${hours}:59:59`;
     },
